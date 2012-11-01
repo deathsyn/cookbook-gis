@@ -14,7 +14,7 @@ This cookbook provides [GIS](http://en.wikipedia.org/wiki/Geographic_information
 
 ## ubuntugis
 
-* `node.gis[:ubuntugis][:release]` - set up the ubuntugis ppa. can be "stable" to choose [ubuntugis-stable](http://launchpad.net/~ubuntugis/+archive/ppa) or "unstable" to choose [ubuntugis-unstable](https://launchpad.net/~ubuntugis/+archive/ubuntugis-unstable).
+* `node.gis[:ubuntugis][:repo]` - set up the ubuntugis ppa. can be "stable" to choose [ubuntugis-stable](http://launchpad.net/~ubuntugis/+archive/ppa) or "unstable" to choose [ubuntugis-unstable](https://launchpad.net/~ubuntugis/+archive/ubuntugis-unstable).
 * `node.gis[:ubuntugis][:packages]` - set up a list of gis packages from ubuntugis repositories to install. Empty by default.
 
 ## gdal
