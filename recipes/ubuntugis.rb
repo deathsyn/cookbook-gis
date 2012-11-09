@@ -1,8 +1,9 @@
 
 if platform?('ubuntu')
+
   include_recipe 'apt'
 
-  repo_uri = node.gis[:ubuntugis][:uri] || case node.gis[:ubuntugis][:repo]
+  repo_uri = node.gis['ubuntugis']['uri'] || case node.gis['ubuntugis']['repo']
     when "unstable" then "http://ppa.launchpad.net/ubuntugis/ubuntugis-unstable/ubuntu"
     when "stable" then "http://ppa.launchpad.net/ubuntugis/ppa/ubuntu"
   end
@@ -12,7 +13,7 @@ if platform?('ubuntu')
     distribution node['lsb']['codename']
     components ['main']
     keyserver 'keyserver.ubuntu.com'
-    key node.gis[:ubuntugis][:key]
+    key node.gis['ubuntugis']['key']
     action :add
     notifies :run, "execute[apt-get update]", :immediately
   end
@@ -22,7 +23,7 @@ if platform?('ubuntu')
     action :run
   end
 
-  node.gis[:ubuntugis][:packages].each do |pkg|
+  node.gis['ubuntugis']['packages'].each do |pkg|
     package pkg do
       action :install
     end
