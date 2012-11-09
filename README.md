@@ -1,5 +1,7 @@
 # GIS cookbook
 
+[![Build Status](https://secure.travis-ci.org/marsam/cookbook-gis.png?branch=master)](https://travis-ci.org/marsam/cookbook-gis)
+
 This cookbook provides [GIS](http://en.wikipedia.org/wiki/Geographic_information_system)
 
 # Requirements
