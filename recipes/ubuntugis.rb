@@ -1,6 +1,5 @@
 
-case node[:platform]
-when 'ubuntu'
+if platform?('ubuntu')
   include_recipe 'apt'
 
   repo_uri = node.gis[:ubuntugis][:uri] || case node.gis[:ubuntugis][:repo]
@@ -14,6 +13,13 @@ when 'ubuntu'
     components ['main']
     keyserver 'keyserver.ubuntu.com'
     key node.gis[:ubuntugis][:key]
+    action :add
+    notifies :run, "execute[apt-get update]", :immediately
+  end
+
+  execute "apt_update" do
+    command "apt-get update"
+    action :run
   end
 
   node.gis[:ubuntugis][:packages].each do |pkg|
@@ -24,4 +30,3 @@ when 'ubuntu'
 else
   Chef::Log.error("This recipe only works on ubuntu-based distributions")
 end
-
