@@ -2,8 +2,9 @@
 include_recipe "ark"
 include_recipe "build-essential"
 
-case node[:platform]
-when "ubuntu", "debian"
+download_url = "http://download.osgeo.org/gdal/gdal-#{node.gis['gdal']['version']}.tar.gz"
+
+if platform?("ubuntu", "debian")
   %|python-all-dev|.each do |pkg|
     package pkg do
       action :install
@@ -12,6 +13,6 @@ when "ubuntu", "debian"
 end
 
 ark "install_gdal" do
-  url     node.gis[:gdal][:download_url]
+  url     download_url
   action  [ :configure, :install_with_make ]
 end
